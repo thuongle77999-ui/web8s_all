@@ -11,7 +11,7 @@ function checkAuth() {
 function logoutAdmin() {
     localStorage.removeItem('adminLoggedIn'); // Xóa trạng thái đăng nhập
     alert('Bạn đã đăng xuất thành công.');
-    window.location.href = 'loginadmin.html'; // Chuyển hướng về trang đăng nhập
+    window.location.href = 'home.html'; // Chuyển hướng về trang đăng nhập
 }
 
 // Gọi hàm kiểm tra mỗi khi trang admin.html được tải
@@ -25,6 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const sidebarMenuItems = document.querySelectorAll('.sidebar .menu-item');
     const contentViews = document.querySelectorAll('.content-view');
     const logoutButton = document.querySelector('.user-control .nav-item');
+    const searchInput = document.getElementById('searchInput');
+    let allUsers = []; // **Thêm biến này để lưu toàn bộ dữ liệu**
+    
+
 
     // Gắn chức năng đăng xuất vào nút
     logoutButton.addEventListener('click', logoutAdmin);
