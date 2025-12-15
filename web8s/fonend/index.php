@@ -14,18 +14,32 @@
     <style>
         html { scroll-behavior: smooth; }
         #message { margin-top: 10px; font-size: 16px; }
+
+        .submenu, .nested {
+            list-style: none;
+            padding-left: 15px;
+            display: none;
+        }
+
+        .submenu li, .nested li {
+            margin: 5px 0;
+        }
+
+        .arrow {
+            font-weight: bold;
+            margin-left: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
 
-<!-- TOP BAR -->
 <div class="top-bar">
     📞 Hotline: 0822.314.555  
     <a href="#dangky">Đăng ký tìm hiểu</a>
 </div>
 
-<!-- MENU -->
 <nav>
     <ul>
         <li><a>Trang chủ</a></li>
@@ -36,63 +50,46 @@
             </a>
 
             <ul id="duhocMenu" class="submenu">
+    <li>
+        <a href="duc.html">Du học Đức</a>
+    </li>
 
-                <li>
-                    <a onclick="toggleNested(event,'ducNested','arrowDuc')">
-                        Du học nghề Đức 
-                        <span id="arrowDuc" class="arrow">▶</span>
-                    </a>
-                    <ul id="ducNested" class="nested">
-                        <li><a>Điều dưỡng</a></li>
-                        <li><a>Nhà hàng – KS</a></li>
-                        <li><a>Điện – Cơ khí</a></li>
-                    </ul>
-                </li>
+    <li>
+        <a href="nhat.html">Du học Nhật</a>
+    </li>
 
-                <li>
-                    <a onclick="toggleNested(event,'nhatNested','arrowNhat')">
-                        Du học Nhật Bản 
-                        <span id="arrowNhat" class="arrow">▶</span>
-                    </a>
-                    <ul id="nhatNested" class="nested">
-                        <li><a>THPT</a></li>
-                        <li><a>CĐ – Đại học</a></li>
-                        <li><a>Vừa học vừa làm</a></li>
-                    </ul>
-                </li>
+    <li>
+        <a href="han.html">Du học Hàn Quốc</a>
+    </li>
+</ul>
 
-                <li>
-                    <a onclick="toggleNested(event,'hanNested','arrowHan')">
-                        Du học Hàn Quốc 
-                        <span id="arrowHan" class="arrow">▶</span>
-                    </a>
-                    <ul id="hanNested" class="nested">
-                        <li><a>Trường tiếng</a></li>
-                        <li><a>Đại học</a></li>
-                        <li><a>Cao học</a></li>
-                    </ul>
-                </li>
+        </li>
+
+        <li>
+            <a onclick="toggleNested(event,'xkldNested','arrowXKLD')">
+                Xuất khẩu lao động 
+                <span id="arrowXKLD" class="arrow">▶</span>
+            </a>
+            <ul id="xkldNested" class="nested">
+                <li><a>Nhật Bản</a></li>
+                <li><a>Hàn Quốc</a></li>
+                <li><a>Đài Loan</a></li>
+                <li><a>Châu Âu</a></li>
             </ul>
         </li>
 
-        <li><a>Xuất khẩu lao động</a></li>
-        <li><a>Hoạt động</a></li>
-        <li><a>Liên hệ</a></li>
-
+        <li><a href="hoatdong.html">Hoạt động</a></li>
+        <li><a href="lienhe.html">Liên hệ</a></li>
         <li><a href="#dangky" style="color:#ff6600; font-weight:bold;">Đăng ký</a></li>
 
-        <li class="search-box">
-            <input type="text" id="searchInput" placeholder="Tìm kiếm..." onkeyup="searchMenu()">
-        </li>
+    
     </ul>
 </nav>
 
-<!-- BANNER -->
 <div class="banner">
     TƯ VẤN DU HỌC & XUẤT KHẨU LAO ĐỘNG
 </div>
 
-<!-- TWO-COLUMN SECTION -->
 <section class="two-column-section">
     <div class="left-slider">
         <div class="slider-container">
@@ -120,7 +117,6 @@
     </div>
 </section>
 
-<!-- FORM -->
 <div class="form-container" id="dangky">
     <h3>ĐĂNG KÝ TƯ VẤN NHANH</h3>
     <form id="userRegistrationForm">
@@ -129,7 +125,7 @@
         <input type="text" id="ho_ten" required>
 
         <label>Năm Sinh:</label>
-        <input type="number" id="nam_sinh" required>
+        <input type="text" id="nam_sinh" required maxlength="4">
 
         <label>Địa Chỉ:</label>
         <input type="text" id="dia_chi" required>
@@ -153,41 +149,110 @@
 
         <div id="quoc_gia_khac_box" style="display:none;">
             <label>Nhập quốc gia khác:</label>
-            <input type="text" id="quoc_gia_khac" placeholder="Không bắt buộc">
+            <input type="text" id="quoc_gia_khac">
         </div>
 
         <label>Số Điện Thoại:</label>
-        <input type="tel" id="sdt" required>
+        <input type="tel" id="sdt" required maxlength="11" pattern="[0-9]{9,11}">
 
         <button type="submit">GỬI THÔNG TIN</button>
-
         <p id="message"></p>
     </form>
 </div>
 
-<!-- THÔNG TIN -->
 <section style="background:#002b6f; color:white; padding:40px 20px; margin-top:40px;">
-    <h2 style="margin-top:0;">CÔNG TY CỔ PHẦN NHÂN LỰC QUỐC TẾ ICO</h2>
+    <div style="
+        max-width:1100px;
+        margin:auto;
+        display:flex;
+        gap:30px;
+        align-items:center;
+        flex-wrap:wrap;
+    ">
 
-    <p><strong>📌 Địa chỉ:</strong><br>
-        Số 360, đường Phan Đình Phùng, tỉnh Thái Nguyên.
-    </p>
+        <!-- BÊN TRÁI: THÔNG TIN -->
+        <div style="flex:1; min-width:260px;">
+            <h2 style="margin-top:0;">CÔNG TY CỔ PHẦN NHÂN LỰC QUỐC TẾ ICO</h2>
 
-    <p><strong>📞 Hotline:</strong> 0822.314.555</p>
+            <p>
+                <strong>📌 Địa chỉ:</strong><br>
+                Số 360, đường Phan Đình Phùng,<br>
+                Tỉnh Thái Nguyên
+            </p>
 
-    <p><strong>🌐 Liên hệ:</strong>
-        Facebook | Zalo | Website
-    </p>
+            <p><strong>📞 Hotline:</strong> 0822.314.555</p>
+
+            <p>
+                <strong>🌐 Liên hệ:</strong><br>
+                Facebook | Zalo | Website
+            </p>
+        </div>
+
+        <!-- BÊN PHẢI: MAP CLICK -->
+        <div style="flex:1; min-width:300px;">
+            <a 
+                href="https://www.google.com/maps?q=21.583564667410258,105.83856648859603"
+                target="_blank"
+                style="display:block;"
+            >
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d907.4559325278975!2d105.83856648859603!3d21.583564667410258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313527922dc8a8f1%3A0x1993dff35aafb279!2zVsSDbiBwaMOybmcgVGjEg25nIExvbmc!5e1!3m2!1sen!2s!4v1765696668145!5m2!1sen!2s"
+                    width="100%"
+                    height="300"
+                    style="border:0; border-radius:10px; pointer-events:none;"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </a>
+        </div>
+
+    </div>
 </section>
-
-<!-- SCRIPT GỐC -->
-<script src="scrip.js"></script>
-
-<!-- ⭐ THÊM SCRIPT KIỂM TRA GỬI DỮ LIỆU API ⭐ -->
+<!-- ================= SCRIPT HOÀN CHỈNH ================ -->
 <script>
+function toggleNested(event, nestedId, arrowId) {
+    event.preventDefault();
+    const nested = document.getElementById(nestedId);
+    const arrow = document.getElementById(arrowId);
+
+    nested.style.display = nested.style.display === "block" ? "none" : "block";
+    arrow.textContent = nested.style.display === "block" ? "▼" : "▶";
+}
+
+function toggleQuocGiaKhac(){
+    document.getElementById("quoc_gia_khac_box").style.display =
+        document.getElementById("quoc_gia").value === "Khác" ? "block" : "none";
+}
+
+/* ===== CHẶN "-" CHO NĂM SINH ===== */
+const namSinh = document.getElementById("nam_sinh");
+
+namSinh.addEventListener("keydown", function (e) {
+    let allowed = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"];
+    if (allowed.includes(e.key)) return;
+    if (!/^[0-9]$/.test(e.key)) e.preventDefault();
+});
+
+namSinh.addEventListener("input", function () {
+    this.value = this.value.replace(/[^0-9]/g, "");
+});
+
+/* ===== CHẶN "-" CHO SĐT ===== */
+const sdt = document.getElementById("sdt");
+
+sdt.addEventListener("keydown", function (e) {
+    let allowed = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"];
+    if (allowed.includes(e.key)) return;
+    if (!/^[0-9]$/.test(e.key)) e.preventDefault();
+});
+
+sdt.addEventListener("input", function () {
+    this.value = this.value.replace(/[^0-9]/g, "");
+});
+
+/* Gửi Form */
 document.getElementById('userRegistrationForm').addEventListener('submit', function (event) {
     event.preventDefault();
-
     const messageDisplay = document.getElementById('message');
     messageDisplay.textContent = 'Đang gửi thông tin...';
     messageDisplay.style.color = '#0f75bd';
@@ -201,19 +266,14 @@ document.getElementById('userRegistrationForm').addEventListener('submit', funct
         sdt: document.getElementById('sdt').value
     };
 
-    const apiUrl = 'http://localhost/web8s/backend_api/insert.php';
-
-    fetch(apiUrl, {
+    fetch('http://localhost/web8s/backend_api/insert.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     })
-    .then(response => {
-        if (!response.ok) throw new Error('HTTP Error ' + response.status);
-        return response.json();
-    })
+    .then(response => response.json())
     .then(apiResult => {
-        if (apiResult.status === true) {
+        if (apiResult.status) {
             messageDisplay.textContent = '✅ Đăng ký thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.';
             messageDisplay.style.color = 'green';
             event.target.reset();
@@ -228,30 +288,69 @@ document.getElementById('userRegistrationForm').addEventListener('submit', funct
         console.error(error);
     });
 });
+
+/* Search Menu */
+function searchMenu(){
+    let keyword = document.getElementById("searchInput").value.toLowerCase();
+    let items = document.querySelectorAll("nav ul li");
+
+    items.forEach(li=>{
+        li.style.display = li.innerText.toLowerCase().includes(keyword) ? "block" : "none";
+    });
+}
+
+/* Menu cấp 1 */
+function toggleMenu(id, arrowId){
+    let menu = document.getElementById(id);
+    let arrow = document.getElementById(arrowId);
+    let isOpen = menu.style.display === "block";
+
+    document.querySelectorAll(".submenu").forEach(m => m.style.display = "none");
+    document.querySelectorAll(".arrow").forEach(a => a.textContent = "▶");
+
+    if(!isOpen){
+        menu.style.display = "block";
+        arrow.textContent = "▼";
+    }
+}
+
+/* Slider */
+const slider = document.querySelector(".slider");
+const images = document.querySelectorAll(".slider img");
+let index = 0;
+
+document.querySelector(".next").onclick = () => {
+    index++;
+    if (index >= images.length) index = 0;
+    updateSlider();
+};
+
+document.querySelector(".prev").onclick = () => {
+    index--;
+    if (index < 0) index = images.length - 1;
+    updateSlider();
+};
+
+function updateSlider() {
+    slider.style.transform = `translateX(-${index * 100}%)`;
+}
+
+setInterval(() => {
+    index++;
+    if (index >= images.length) index = 0;
+    updateSlider();
+}, 4000);
+
+/* Scroll đến form */
+document.querySelectorAll('a[href="#dangky"]').forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.getElementById("dangky").scrollIntoView({ behavior: "smooth" });
+    });
+});
 </script>
 
+
+
 </body>
-<?php
-// --- KHỐI ĐỌC DỮ LIỆU NỘI DUNG TỪ DATABASE ---
-// Điều chỉnh đường dẫn nếu db_config.php không nằm cùng cấp
-include '../backend_api/db_config.php';
-
-// Mảng chứa toàn bộ nội dung {key: value}
-$content = []; 
-
-if ($conn) {
-    // 241: Sử dụng biến $content_table (được include từ db_config.php)
-    $sql = "SELECT section_key, content_value FROM $content_table";
-
-    // 242: Thực thi query trên đối tượng $conn
-    $result = $conn->query($sql);
-
-    if ($result && $result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $content[$row['section_key']] = $row['content_value'];
-        }
-    }
-    $conn->close(); 
-}
-?>
 </html>
