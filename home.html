@@ -184,6 +184,8 @@
                         tableHTML += '</tbody></table>';
                         tableContainer.innerHTML = tableHTML;
                     }
+
+        //----------------------------------------------------------------------------------------------------------------
                     // Hàm lọc dữ liệu dựa trên input tìm kiếm
                     function filterUsers() {
                         const searchTerm = searchInput.value.toLowerCase();
@@ -209,9 +211,9 @@
                     // Thêm Listener cho ô tìm kiếm
                     searchInput.addEventListener('keyup', filterUsers);
 
-                    // ----------------------------------------------------------------------
+                    // -----------------------------------------------------------------------------------------------------------
                     // 2. CHỨC NĂNG XÓA (DELETE)
-                    // ----------------------------------------------------------------------
+                    // -----------------------------------------------------------------------------------------------------------
 
                     async function deleteUser(id) {
                         if (!confirm(`Bạn có chắc chắn muốn xóa người dùng ID: ${id} không ? `)) {
@@ -241,9 +243,9 @@
                         }
                     }
 
-                    // ----------------------------------------------------------------------
+                    // -----------------------------------------------------------------------------------------------------
                     // 3. CHỨC NĂNG CẬP NHẬT (UPDATE)
-                    // ----------------------------------------------------------------------
+                    // -------------------------------------------------------------------------------------------------------
 
                     // Mở Modal và điền dữ liệu cũ vào form
                     function openEditModal(id, ho_ten, sdt, nam_sinh, dia_chi, chuong_trinh, quoc_gia, ghi_chu, trang_thai) {
@@ -446,32 +448,10 @@
 
             </div>
 
-            <div id="page-structure" class="content-view">
-                <h2>⚙️ Quản lý Cấu trúc Trang Web</h2>
-                <p>Đây là khu vực để sửa nội dung của trang web. Bố cục này mô phỏng cấu trúc 3 hàng/3 cột từ Hình
-                    2.</p>
-
-                <div class="web-layout-mockup">
-                    <div class="row">
-                        <div class="cell">Hàng 1, Cột 1</div>
-                        <div class="cell">Hàng 1, Cột 2</div>
-                        <div class="cell">Hàng 1, Cột 3</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Hàng 2, Cột 1: Ảnh</div>
-                        <div class="cell">Hàng 2, Cột 2: Text</div>
-                        <div class="cell">Hàng 2, Cột 3</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Hàng 3, Cột 1: Icon</div>
-                        <div class="cell">Hàng 3, Cột 2: Multi-Text</div>
-                        <div class="cell">Hàng 3, Cột 3: Map</div>
-                    </div>
-                </div>
-            </div>
+        
 
             <div id="other-data" class="content-view">
-                <h2>📚 Quản lý Dữ liệu Khác</h2>
+                <h2>📚 Quản lý nội dung trang web</h2>
 
                 <div class="table-controls" style="margin-bottom: 20px; display: flex; gap: 10px; align-items: center;">
                     <input type="text" id="searchInputOther" placeholder="Tìm kiếm ID, Ngày nhận, Tên, SĐT, Ghi chú..."
@@ -480,16 +460,7 @@
                         📥 Xuất File TXT
                     </button>
                 </div>
-                <div id="otherDataTableContainer">
-                    <p style="text-align:center;">Đang tải dữ liệu khác...</p>
-                </div>
 
-                <div class="table-footer">
-                    <p>Hiển thị 1 đến 10 trên tổng số X bản ghi</p>
-                </div>
-            </div>
-            <div id="text-edit" class="content-view">
-                <h2>📝 Sửa Văn Bản/Tiêu đề Trang Chủ</h2>
                 <div id="content-message" style="margin-bottom: 15px;"></div>
 
                 <form id="editContentForm">
@@ -525,11 +496,6 @@
                     <button type="button" onclick="saveAllContent()" class="btn-update action-btn"
                         style="margin-top: 20px;">LƯU TẤT CẢ NỘI DUNG</button>
                 </form>
-            </div>
-            <div id="image-management" class="content-view">
-                <h2>🖼️ Quản lý Hình ảnh</h2>
-                <p>Upload, thay thế, xóa hình ảnh.</p>
-            </div>
             </div>
         </section>
     </main>
